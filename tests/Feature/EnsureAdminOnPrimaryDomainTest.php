@@ -24,3 +24,13 @@ test('admin is not available on a ddev-style selling domain', function () {
     $this->get('http://agentic.io.ddev.site/admin/login')
         ->assertNotFound();
 });
+
+test('livewire update endpoint is not blocked by domain resolution on the primary host', function () {
+    $uri = app('livewire')->getUpdateUri();
+
+    $status = $this->post('http://domain-bidder.ddev.site'.$uri, [], [
+        'X-Livewire' => '1',
+    ])->status();
+
+    expect($status)->not->toBe(404);
+});

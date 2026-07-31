@@ -45,6 +45,14 @@ class ResolveDomain
 
     protected function shouldSkip(Request $request): bool
     {
+        // Livewire/Filament endpoints are not hostname-bound selling pages.
+        // Filament admin POSTs to /livewire-{hash}/update (outside /admin/*).
+        if (str_starts_with($request->path(), 'livewire-')
+            || str_starts_with($request->path(), 'livewire/')
+            || str_starts_with($request->path(), 'filament/')) {
+            return true;
+        }
+
         return $request->is('login', 'logout', 'register', 'forgot-password', 'reset-password', 'reset-password/*')
             || $request->is('email/*', 'user/*', 'two-factor-challenge', 'confirm-password')
             || $request->is('settings', 'settings/*')

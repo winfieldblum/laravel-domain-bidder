@@ -181,6 +181,8 @@ Keep `.env` at **`~/apps/domain-bidder/.env`**, not under `src/`, so re-clones a
 | Named Docker volumes vs Mautic layout | Volumes hide data under `/var/lib/docker` | Use host bind mounts `./data` and `./db_data` for backup scripts |
 | Filament login broken / `livewire.min.js` 404 | Nginx static `.js` location serves missing file as 404; Livewire JS is a Laravel route | Add `try_files $uri /index.php?$query_string;` to the static-assets location |
 | Livewire `update` to `http://…` (provisional headers) | App behind Cloudflare/NPM sees HTTP only; generates insecure Livewire URLs | Set `APP_URL=https://…`, trust proxies, `URL::forceScheme('https')` in production |
+| Cloudflare 502 / nginx FATAL `invalid number of arguments in "try_files"` | Dockerfile `COPY <<EOF` expanded `$uri` at build time, mangling nginx config | Use `COPY <<"EOF"` (quoted) so nginx vars stay literal |
+| Filament login Livewire `update` 404 modal | `ResolveDomain` treated `/livewire-{hash}/update` as a selling-domain page | Skip `livewire-*` / `filament/` paths in `ResolveDomain` |
 
 ### `env_file` vs bind-mounted `.env`
 
