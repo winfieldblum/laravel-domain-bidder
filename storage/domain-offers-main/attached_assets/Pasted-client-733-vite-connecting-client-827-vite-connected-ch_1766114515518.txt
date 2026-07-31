@@ -1,0 +1,63 @@
+client:733 [vite] connecting...
+client:827 [vite] connected.
+chunk-LPF6KSF2.js?v=4eefbfb8:21609 Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+use-auth.ts:47 useAuth hook - user: undefined isLoading: true
+use-auth.ts:47 useAuth hook - user: undefined isLoading: true
+Admin.tsx:24 Admin page render - authLoading: true user: undefined status: pending offersLoading: true offers: undefined error: null
+use-offers.ts:31 Offers data received: (4) [{…}, {…}, {…}, {…}]
+use-offers.ts:33 Offers parsed successfully: (4) [{…}, {…}, {…}, {…}]
+use-auth.ts:47 useAuth hook - user: undefined isLoading: true
+Admin.tsx:24 Admin page render - authLoading: true user: undefined status: success offersLoading: false offers: (4) [{…}, {…}, {…}, {…}] error: null
+use-auth.ts:47 useAuth hook - user: undefined isLoading: false
+use-auth.ts:47 useAuth hook - user: undefined isLoading: false
+Admin.tsx:24 Admin page render - authLoading: false user: undefined status: success offersLoading: false offers: (4) [{…}, {…}, {…}, {…}] error: null
+Admin.tsx:29 User not authenticated, showing login prompt
+Admin @ Admin.tsx:29
+renderWithHooks @ chunk-LPF6KSF2.js?v=4eefbfb8:11596
+updateFunctionComponent @ chunk-LPF6KSF2.js?v=4eefbfb8:14630
+beginWork @ chunk-LPF6KSF2.js?v=4eefbfb8:15972
+beginWork$1 @ chunk-LPF6KSF2.js?v=4eefbfb8:19806
+performUnitOfWork @ chunk-LPF6KSF2.js?v=4eefbfb8:19251
+workLoopSync @ chunk-LPF6KSF2.js?v=4eefbfb8:19190
+renderRootSync @ chunk-LPF6KSF2.js?v=4eefbfb8:19169
+performSyncWorkOnRoot @ chunk-LPF6KSF2.js?v=4eefbfb8:18927
+flushSyncCallbacks @ chunk-LPF6KSF2.js?v=4eefbfb8:9166
+(anonymous) @ chunk-LPF6KSF2.js?v=4eefbfb8:18677
+setTimeout
+scheduleFn @ @tanstack_react-query.js?v=4eefbfb8:537
+flush @ @tanstack_react-query.js?v=4eefbfb8:551
+batch @ @tanstack_react-query.js?v=4eefbfb8:569
+#dispatch @ @tanstack_react-query.js?v=4eefbfb8:963
+onError @ @tanstack_react-query.js?v=4eefbfb8:832
+reject @ @tanstack_react-query.js?v=4eefbfb8:450
+(anonymous) @ @tanstack_react-query.js?v=4eefbfb8:490
+Promise.catch
+run @ @tanstack_react-query.js?v=4eefbfb8:481
+(anonymous) @ @tanstack_react-query.js?v=4eefbfb8:501
+Promise.then
+(anonymous) @ @tanstack_react-query.js?v=4eefbfb8:497
+Promise.catch
+run @ @tanstack_react-query.js?v=4eefbfb8:481
+start @ @tanstack_react-query.js?v=4eefbfb8:518
+fetch @ @tanstack_react-query.js?v=4eefbfb8:893
+#executeFetch @ @tanstack_react-query.js?v=4eefbfb8:1963
+onSubscribe @ @tanstack_react-query.js?v=4eefbfb8:1840
+subscribe @ @tanstack_react-query.js?v=4eefbfb8:19
+(anonymous) @ @tanstack_react-query.js?v=4eefbfb8:2962
+subscribeToStore @ chunk-LPF6KSF2.js?v=4eefbfb8:12032
+commitHookEffectListMount @ chunk-LPF6KSF2.js?v=4eefbfb8:16963
+commitPassiveMountOnFiber @ chunk-LPF6KSF2.js?v=4eefbfb8:18206
+commitPassiveMountEffects_complete @ chunk-LPF6KSF2.js?v=4eefbfb8:18179
+commitPassiveMountEffects_begin @ chunk-LPF6KSF2.js?v=4eefbfb8:18169
+commitPassiveMountEffects @ chunk-LPF6KSF2.js?v=4eefbfb8:18159
+flushPassiveEffectsImpl @ chunk-LPF6KSF2.js?v=4eefbfb8:19543
+flushPassiveEffects @ chunk-LPF6KSF2.js?v=4eefbfb8:19500
+performSyncWorkOnRoot @ chunk-LPF6KSF2.js?v=4eefbfb8:18921
+flushSyncCallbacks @ chunk-LPF6KSF2.js?v=4eefbfb8:9166
+commitRootImpl @ chunk-LPF6KSF2.js?v=4eefbfb8:19485
+commitRoot @ chunk-LPF6KSF2.js?v=4eefbfb8:19330
+finishConcurrentRender @ chunk-LPF6KSF2.js?v=4eefbfb8:18858
+performConcurrentWorkOnRoot @ chunk-LPF6KSF2.js?v=4eefbfb8:18768
+workLoop @ chunk-LPF6KSF2.js?v=4eefbfb8:197
+flushWork @ chunk-LPF6KSF2.js?v=4eefbfb8:176
+performWorkUntilDeadline @ chunk-LPF6KSF2.js?v=4eefbfb8:384
