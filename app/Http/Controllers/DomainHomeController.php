@@ -30,11 +30,44 @@ class DomainHomeController extends Controller
                 ]),
                 'selling_points' => $domain->sellingPoints->pluck('text'),
             ],
+            'otherDomains' => $this->otherDomainsForSale($domain, $request),
             'highestBid' => $bids->highestAcceptedAmount($domain),
             'minimumBid' => max(
                 (int) config('bids.minimum_amount'),
                 $bids->highestAcceptedAmount($domain) + (int) config('bids.increment'),
             ),
         ]);
+    }
+
+    /**
+     * @return list<array{hostname: string, display_name: string, tagline: string, url: string}>
+     */
+    protected function otherDomainsForSale(Domain $current, Request $request): array
+    {
+        return Domain::query()
+            ->active()
+            ->whereKeyNot($current->id)
+            ->orderBy('hostname')
+            ->get(['hostname', 'display_name', 'tagline'])
+            ->map(fn (Domain $domain): array => [
+                'hostname' => $domain->hostname,
+                'display_name' => $domain->display_name,
+                'tagline' => $domain->tagline,
+                'url' => $this->publicUrlForDomain($domain, $request),
+            ])
+            ->values()
+            ->all();
+    }
+
+    protected function publicUrlForDomain(Domain $domain, Request $request): string
+    {
+        $scheme = $request->secure() ? 'https' : 'http';
+        $host = $domain->hostname;
+
+        if (str_ends_with(strtolower($request->getHost()), '.ddev.site')) {
+            $host .= '.ddev.site';
+        }
+
+        return "{$scheme}://{$host}";
     }
 }

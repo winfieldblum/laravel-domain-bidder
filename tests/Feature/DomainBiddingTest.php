@@ -44,6 +44,38 @@ test('home renders for an active domain host', function () {
             ->component('domains/Home')
             ->where('domain.hostname', 'agentic.io')
             ->where('highestBid', 0)
+            ->has('otherDomains', 0)
+        );
+});
+
+test('home lists other active domains for sale', function () {
+    $other = Domain::factory()->create([
+        'hostname' => 'onlinescrums.com',
+        'display_name' => 'Online Scrums',
+        'tagline' => 'Own the conversation.',
+        'is_active' => true,
+    ]);
+
+    Domain::factory()->create([
+        'hostname' => 'inactive.test',
+        'is_active' => false,
+    ]);
+
+    $this->get(domainUrl('/'))
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->component('domains/Home')
+            ->has('otherDomains', 1)
+            ->where('otherDomains.0.hostname', 'onlinescrums.com')
+            ->where('otherDomains.0.display_name', 'Online Scrums')
+            ->where('otherDomains.0.url', 'http://onlinescrums.com')
+        );
+
+    $this->get('http://'.$other->hostname.'.ddev.site/')
+        ->assertOk()
+        ->assertInertia(fn ($page) => $page
+            ->where('otherDomains.0.hostname', 'agentic.io')
+            ->where('otherDomains.0.url', 'http://agentic.io.ddev.site')
         );
 });
 

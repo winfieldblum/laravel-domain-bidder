@@ -46,6 +46,12 @@ defineProps<{
         features: Feature[];
         selling_points: string[];
     };
+    otherDomains: {
+        hostname: string;
+        display_name: string;
+        tagline: string;
+        url: string;
+    }[];
     highestBid: number;
     minimumBid: number;
 }>();
@@ -73,14 +79,14 @@ function resolveIcon(name: string): Component {
             />
 
             <div class="container mx-auto px-4">
-                <div class="mx-auto max-w-4xl text-center">
+                <div class="@container mx-auto max-w-4xl text-center">
                     <span
                         class="mb-6 inline-block rounded-full border border-indigo-100 bg-indigo-50 px-4 py-1.5 text-sm font-medium text-indigo-700"
                     >
                         Premium Domain For Sale
                     </span>
                     <h1
-                        class="font-display mb-6 text-6xl font-bold tracking-tighter text-slate-900 md:text-8xl"
+                        class="font-display mb-6 max-w-full font-bold tracking-tighter break-words text-slate-900 text-[clamp(2rem,12cqw,6rem)] leading-[1.05]"
                     >
                         {{ domain.hostname }}
                     </h1>
@@ -164,6 +170,42 @@ function resolveIcon(name: string): Component {
                         />
                         <span class="text-lg text-slate-800">{{ point }}</span>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section
+            v-if="otherDomains.length > 0"
+            class="border-t border-slate-100 bg-white py-20"
+        >
+            <div class="container mx-auto px-4 text-center">
+                <h3 class="font-display mb-3 text-2xl font-bold">
+                    Also available for sale
+                </h3>
+                <p class="mx-auto mb-10 max-w-xl text-slate-600">
+                    Explore other premium domains currently open for offers.
+                </p>
+                <div class="mx-auto grid max-w-3xl gap-4 text-left">
+                    <a
+                        v-for="other in otherDomains"
+                        :key="other.hostname"
+                        :href="other.url"
+                        class="group flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 transition hover:border-indigo-200 hover:bg-white hover:shadow-sm"
+                    >
+                        <div class="min-w-0">
+                            <div
+                                class="font-display truncate text-lg font-bold tracking-tight text-slate-900 group-hover:text-indigo-700"
+                            >
+                                {{ other.hostname }}
+                            </div>
+                            <p class="mt-1 truncate text-sm text-slate-600">
+                                {{ other.tagline }}
+                            </p>
+                        </div>
+                        <ArrowRight
+                            class="h-5 w-5 shrink-0 text-slate-400 transition group-hover:translate-x-0.5 group-hover:text-indigo-700"
+                        />
+                    </a>
                 </div>
             </div>
         </section>
