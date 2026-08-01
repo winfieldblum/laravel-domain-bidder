@@ -183,6 +183,7 @@ Keep `.env` at **`~/apps/domain-bidder/.env`**, not under `src/`, so re-clones a
 | Livewire `update` to `http://…` (provisional headers) | App behind Cloudflare/NPM sees HTTP only; generates insecure Livewire URLs | Set `APP_URL=https://…`, trust proxies, `URL::forceScheme('https')` in production |
 | Cloudflare 502 / nginx FATAL `invalid number of arguments in "try_files"` | Dockerfile `COPY <<EOF` expanded `$uri` at build time, mangling nginx config | Use `COPY <<"EOF"` (quoted) so nginx vars stay literal |
 | Filament login Livewire `update` 404 modal | `ResolveDomain` treated `/livewire-{hash}/update` as a selling-domain page | Skip `livewire-*` / `filament/` paths in `ResolveDomain` |
+| `/admin` 403 after login | Filament 5 blocks panel access in non-local envs unless `User` implements `FilamentUser` | Implement `canAccessPanel()` on `User` |
 
 ### `env_file` vs bind-mounted `.env`
 
