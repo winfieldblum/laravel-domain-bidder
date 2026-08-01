@@ -21,6 +21,9 @@ class DatabaseSeeder extends Seeder
             'password' => 'password',
         ]);
 
-        $this->call(DomainSeeder::class);
+        $this->call([
+            DomainSeeder::class,
+            LegacyAgenticOffersSeeder::class,
+        ]);
     }
 }

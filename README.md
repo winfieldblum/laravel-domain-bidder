@@ -62,9 +62,17 @@ Vite is exposed on port **5173** (see `web_extra_exposed_ports` in DDEV config).
 ```bash
 ddev artisan test --compact
 ddev artisan migrate
-ddev artisan db:seed
+ddev artisan db:seed                # domains + legacy agentic.io offers
 ddev artisan filament:user          # create an admin user if needed
 vendor/bin/pint --dirty             # from inside ddev: ddev exec vendor/bin/pint --dirty
+```
+
+Legacy bids only (idempotent; requires `agentic.io` domain):
+
+```bash
+ddev artisan db:seed --class=LegacyAgenticOffersSeeder
+# production:
+docker exec -it domain-bidder-app php artisan db:seed --class=LegacyAgenticOffersSeeder --force
 ```
 
 ### Local env notes
