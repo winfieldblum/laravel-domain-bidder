@@ -54,6 +54,7 @@ Configured in `.ddev/config.yaml`:
 | `https://domain-bidder.ddev.site` | Primary project URL |
 | `https://agentic.io.ddev.site` | Selling domain (maps to `agentic.io`) |
 | `https://onlinescrums.com.ddev.site` | Selling domain (maps to `onlinescrums.com`) |
+| `https://teamtidings.com.ddev.site` | Selling domain (maps to `teamtidings.com`) |
 
 Vite is exposed on port **5173** (see `web_extra_exposed_ports` in DDEV config). If assets 502 / CORS fail, ensure Vite is running and you hard-refresh the selling-domain URL.
 

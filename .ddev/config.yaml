@@ -7,6 +7,7 @@ xdebug_enabled: false
 additional_hostnames:
     - agentic.io
     - onlinescrums.com
+    - teamtidings.com
 additional_fqdns: []
 database:
     type: postgres

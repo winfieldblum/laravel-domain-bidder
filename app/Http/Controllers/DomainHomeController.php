@@ -4,16 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Domain;
 use App\Services\BidService;
+use App\Services\ImpressionService;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class DomainHomeController extends Controller
 {
-    public function __invoke(Request $request, BidService $bids): Response
+    public function __invoke(Request $request, BidService $bids, ImpressionService $impressions): Response
     {
         /** @var Domain $domain */
         $domain = $request->attributes->get('domain');
+
+        if ($request->isMethod('GET')) {
+            $impressions->record($domain, $request->userAgent());
+        }
+
         $domain->load(['features', 'sellingPoints']);
 
         return Inertia::render('domains/Home', [

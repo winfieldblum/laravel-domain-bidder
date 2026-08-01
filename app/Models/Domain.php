@@ -73,6 +73,14 @@ class Domain extends Model
     }
 
     /**
+     * @return HasMany<DomainImpression, $this>
+     */
+    public function impressions(): HasMany
+    {
+        return $this->hasMany(DomainImpression::class);
+    }
+
+    /**
      * @param  Builder<Domain>  $query
      * @return Builder<Domain>
      */

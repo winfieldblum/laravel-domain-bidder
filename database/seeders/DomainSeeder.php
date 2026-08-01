@@ -100,5 +100,51 @@ class DomainSeeder extends Seeder
             ['text' => 'Strong fit for agile tooling and collaboration SaaS', 'sort_order' => 3],
             ['text' => 'Premium .com available for a category-defining brand', 'sort_order' => 4],
         ]);
+
+        $teamtidings = Domain::query()->updateOrCreate(
+            ['hostname' => 'teamtidings.com'],
+            [
+                'display_name' => 'TeamTidings.com',
+                'tagline' => 'The perfect domain for team updates, internal news, and workplace communication tools.',
+                'description' => 'A warm, memorable brand for products that keep teams informed and connected.',
+                'is_active' => true,
+                'mail_from_address' => 'noreply@teamtidings.com',
+                'mail_from_name' => 'TeamTidings.com',
+                'notification_email' => config('bids.notification_email'),
+            ],
+        );
+
+        $teamtidings->features()->delete();
+        $teamtidings->features()->createMany([
+            [
+                'icon' => 'Users',
+                'title' => 'Team-First',
+                'description' => 'A name that instantly signals internal updates, culture, and workplace communication.',
+                'color' => 'text-blue-500',
+                'sort_order' => 1,
+            ],
+            [
+                'icon' => 'Sparkles',
+                'title' => 'Memorable Brand',
+                'description' => 'Friendly, distinctive, and easy to recall — ideal for SaaS and HR tech.',
+                'color' => 'text-amber-500',
+                'sort_order' => 2,
+            ],
+            [
+                'icon' => 'Globe',
+                'title' => 'Com Credibility',
+                'description' => 'A premium .com that works for products selling to teams worldwide.',
+                'color' => 'text-green-500',
+                'sort_order' => 3,
+            ],
+        ]);
+
+        $teamtidings->sellingPoints()->delete();
+        $teamtidings->sellingPoints()->createMany([
+            ['text' => 'Clear fit for team newsletters, digests, and update platforms', 'sort_order' => 1],
+            ['text' => 'Warm, brandable, and easy to spell', 'sort_order' => 2],
+            ['text' => 'Strong positioning for HR tech and internal communications SaaS', 'sort_order' => 3],
+            ['text' => 'Premium .com ready for a category-defining workplace brand', 'sort_order' => 4],
+        ]);
     }
 }
