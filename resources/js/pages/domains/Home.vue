@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import MedicationTimerBanner from '@/components/MedicationTimerBanner.vue';
 import DomainLayout from '@/layouts/DomainLayout.vue';
 import { create as offerCreate } from '@/actions/App/Http/Controllers/OfferController';
 import {
@@ -153,6 +154,8 @@ function resolveIcon(name: string): Component {
                 </div>
             </div>
         </section>
+
+        <MedicationTimerBanner />
 
         <section class="bg-slate-50 py-20">
             <div class="container mx-auto px-4 text-center">
